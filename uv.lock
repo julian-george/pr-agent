@@ -344,6 +344,36 @@ wheels = [
 ]
 
 [[package]]
+name = "beaker-sdk"
+version = "0.6.6"
+source = { registry = "https://pypi.org/simple" }
+dependencies = [
+    { name = "certifi" },
+    { name = "gh-bin", marker = "sys_platform != 'win32'" },
+    { name = "packaging" },
+    { name = "pydantic" },
+    { name = "pyyaml" },
+]
+sdist = { url = "https://files.pythonhosted.org/packages/aa/4b/cc7bac19b348cb4c8d108971ee7592b40454676c769734be0c9044f75758/beaker_sdk-0.6.6.tar.gz", hash = "sha256:1b313c7e6ccc23370ca44e3056a3284624a485185dc6811ef3e9d6f4fed069b5", size = 222373, upload-time = "2026-11-02T20:01:09.798Z" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/41/25/92a7eb65ce56308468f0f3656516acebe21bd6fb8682afa104db108a3330/beaker_sdk-0.6.6-py3-none-any.whl", hash = "sha256:c1e8a9eada2d628c6f8b4fc8aa32a16b2790de64bebbcd1f3e16df63ceca3f32", size = 248134, upload-time = "2026-11-02T20:01:08.354Z" },
+]
+
+[package.optional-dependencies]
+litellm = [
+    { name = "litellm" },
+    { name = "opentelemetry-api" },
+    { name = "opentelemetry-exporter-otlp-proto-http" },
+    { name = "opentelemetry-sdk" },
+]
+tracing = [
+    { name = "opentelemetry-api" },
+    { name = "opentelemetry-exporter-otlp-proto-http" },
+    { name = "opentelemetry-proto" },
+    { name = "opentelemetry-sdk" },
+]
+
+[[package]]
 name = "beautifulsoup4"
 version = "4.15.0"
 source = { registry = "https://pypi.org/simple" }
@@ -877,6 +907,17 @@ source = { registry = "https://pypi.org/simple" }
 sdist = { url = "https://files.pythonhosted.org/packages/10/a1/ae4e3e5003468d6391d2c77b6fa1cd73bd5d13511d81c642d7b28ac90ed4/fsspec-2026.6.0.tar.gz", hash = "sha256:f5bac145310fe30e16e1471bd6840b2d990d609e872251d7e674241822abf01a", size = 313646, upload-time = "2026-06-16T01:57:28.105Z" }
 wheels = [
     { url = "https://files.pythonhosted.org/packages/e5/22/4222d7ddf3da30f363edaa98e329c2bce6c65497c9cb2810931c8b2c0fbc/fsspec-2026.6.0-py3-none-any.whl", hash = "sha256:02e0b71817df9b2169dc30a16832045764def1191b43dcff5bb85bdee212d2a1", size = 203949, upload-time = "2026-06-16T01:57:26.358Z" },
+]
+
+[[package]]
+name = "gh-bin"
+version = "2.97.0"
+source = { registry = "https://pypi.org/simple" }
+wheels = [
+    { url = "https://files.pythonhosted.org/packages/a6/3d/b100b5322b13674fd0f52c7ca4e9f5ffde506338339c43eeb03e16d03317/gh_bin-2.97.0-py3-none-macosx_10_9_x86_64.whl", hash = "sha256:400db8e23c7f2750e139dab4d3b62210c85493a1944f4e7480ab8171cd8aef9a", size = 14963560, upload-time = "2026-08-03T17:43:20.951Z" },
+    { url = "https://files.pythonhosted.org/packages/7b/09/24a16f0ac9e2d528b97d7222288212782fc0ad0a94533f8837e224b5a23b/gh_bin-2.97.0-py3-none-macosx_11_0_arm64.whl", hash = "sha256:1f90e560f664109b64b75f97e8464571b7892d6f9dfc6d4c0a378c80138fbd50", size = 13298174, upload-time = "2026-08-03T17:43:27.78Z" },
+    { url = "https://files.pythonhosted.org/packages/bc/0e/e6ff59e79185ef6d7eaceb15679e732e6305b2ceb75999bacc844d0b320c/gh_bin-2.97.0-py3-none-manylinux2014_aarch64.musllinux_1_1_aarch64.whl", hash = "sha256:1dcce473529e8b4c4968fde79dcf839a2da68cb64eaa64c730f69ca685751ab2", size = 13045917, upload-time = "2026-08-03T17:43:23.363Z" },
+    { url = "https://files.pythonhosted.org/packages/92/af/07dfe02b685090c9086c9851fcf53f3a55437baabfeb1d30370da2c47f77/gh_bin-2.97.0-py3-none-manylinux2014_x86_64.musllinux_1_1_x86_64.whl", hash = "sha256:0d3d2b8f86b1ab5e89a8a082606442813b165aeab8ec37f3f7f4dbef8903ddb6", size = 14477088, upload-time = "2026-08-03T17:43:25.65Z" },
 ]
 
 [[package]]
@@ -2653,6 +2694,7 @@ otel-grpc = [
 
 [package.dev-dependencies]
 dev = [
+    { name = "beaker-sdk", extra = ["litellm", "tracing"] },
     { name = "httpx" },
     { name = "pr-agent", extra = ["all"] },
     { name = "pytest" },
@@ -2726,6 +2768,7 @@ provides-extras = ["github", "gitlab", "bitbucket", "azure", "codecommit", "gite
 
 [package.metadata.requires-dev]
 dev = [
+    { name = "beaker-sdk", extras = ["litellm", "tracing"], specifier = ">=0.6.6" },
     { name = "httpx", specifier = "==0.28.1" },
     { name = "pr-agent", extras = ["all"] },
     { name = "pytest", specifier = "==9.2.0" },

@@ -154,6 +154,7 @@ dev = [
   "pytest-cov==7.1.0",
   "httpx==0.28.1",
   "ruff==0.17.3",
+  "beaker-sdk[litellm,tracing]>=0.6.6",
 ]
 
 [tool.uv]
